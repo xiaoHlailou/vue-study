@@ -3,7 +3,7 @@ var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
@@ -22,7 +22,10 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src')
+      '@': resolve('src'),
+      // 'src':path.resolve(__dirname,'../src'),
+      'common':path.resolve(__dirname,'../src/common'),
+      'components':path.resolve(__dirname,'../src/components'),
     }
   },
   module: {
@@ -72,4 +75,12 @@ module.exports = {
       }
     ]
   }
+  // vue: {
+  //   loaders: utils.cssLoaders({sourceMap: useCssSourceMap}),
+  //   postcss: [
+  //     require('autoprefixer')({
+  //       browsers: ['last 2 versions', 'Android >= 4.0']
+  //     })
+  //   ]
+  // }
 }
